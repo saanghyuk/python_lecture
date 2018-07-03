@@ -24,6 +24,7 @@ def sum_of_list(list_data):
         sum += list_data[i]
     result = sum;
 
+
     # ==================================
     return result
 

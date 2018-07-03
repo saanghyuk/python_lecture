@@ -5,3 +5,4 @@ for i in range(len(list_a)):
     # print(list_a[i])
   if i%2!=1:
     list_b.append(list_a[i])
+1
