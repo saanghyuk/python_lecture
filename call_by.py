@@ -1,10 +1,11 @@
 
-def spam(eggs):
-    eggs.append(1)
-    print(ham)
-    eggs = [2, 3]
-    print(eggs)
+#
+# sentence=[]
+# sentence[0][1].append(1)
+#
 
-ham =[0]
-spam(ham)
-print(ham)
+print("sanghyuk".split())
+
+
+for i in "sanghyuk":
+    print(i)

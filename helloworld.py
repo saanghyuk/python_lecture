@@ -1,92 +1,106 @@
-# user_input_number="234"
-# random_number="342"
-#
-# strikes=0
-# balls=0
-# user_input_list  = list(user_input_number)
-# random_number_list = list(random_number)
-#
-# len(random_number_list)
-# for i in range(0,len(user_input_list)):
-#     if(user_input_list.count(random_number_list[i])==1):
-#         if(user_input_list[i]==random_number_list[i]):
-#             strikes+=1
-#         else:
-#             balls+=1
-#
-#
-# # print(strikes_or_ball)
-#
-#
-# strikes_or_ball = [strikes,balls]
-# print(strikes_or_ball)
-
-#
-#
-#
-# a=["1", "2", "3"]
-# print(a.count("3")
-result=""
-one_more_input="123"
-if(one_more_input.lower()=="y" or one_more_input.lower()=="yes" ):
-    result=True
-else:
-    result=False
-print(result)
 
 
 
 
+import re
+# Help Function - 수정하지 말 것
+def get_morse_code_dict():
+    morse_code = {
+        "A": ".-", "N": "-.", "B": "-...", "O": "---", "C": "-.-.", "P": ".--.", "D": "-..", "Q": "--.-", "E": ".",
+        "R": ".-.", "F": "..-.", "S": "...", "G": "--.", "T": "-", "H": "....", "U": "..-", "I": "..", "V": "...-",
+        "K": "-.-", "X": "-..-", "J": ".---", "W": ".--", "L": ".-..", "Y": "-.--", "M": "--", "Z": "--.."
+    }
+    return morse_code
 
-# #
-# # three_digit="222"
-# # result=""
-# # check=""
-# # initial_set = set(three_digit)
-# #
-# # set_to_list= list(initial_set)
-# #
-# # for i in range(0, len(set_to_list)):
-# #     check+=set_to_list[i]
-# #
-# # if(sorted(check)==sorted(three_digit)):
-# #     result= False
-# # else:
-# #     result = True
-# #
-# # print(result)
-#
-# import random
-# def get_random_number():
-#     # Helper Function - 지우지 말 것
-#     # 100부터 999까지 수를 램덤하게 반환함
-#     return random.randrange(100, 1000)
-#
-# result=0;
-# check_duplicated = True;
-# rand_number=0;
-# while check_duplicated:
-#     rand_number=get_random_number()
-#     str_number = str(rand_number)
-#     listed_number =list(str_number)
-#     seted_number= set(listed_number)
-#     sorted_list = sorted(listed_number)
-#     sorted_set = sorted(seted_number)
-#     if(sorted_list==sorted_set):
-#         check_duplicated =False
-#         result=rand_number
-#     else:
-#         check_duplicated=True
-# print(result)
-# str_number = str(get_random_number())
-# print(str_number)
-# listed_number =list(str_number)
-# seted_number= set(listed_number)
-#
-# sorted_list = sorted(listed_number)
-# sorted_set = sorted(seted_number)
-#
-# if(sorted_list==sorted_set):
-#     print(True)
-# else:
-#     print(False)
+
+def get_cleaned_english_sentence(raw_english_sentence):
+    # """
+    # Input:
+    #     - raw_english_sentence : 문자열값으로 Morse Code로 변환 가능한 영어 문장
+    # Output:
+    #     - 입력된 영어문장에수 4개의 문장부호를 ".,!?" 삭제하고, 양쪽끝 여백을 제거한 문자열 값 반환
+    # Examples:
+    #     >>> import morsecode as mc
+    #     >>> mc.get_cleaned_english_sentence("This is Gachon!!")
+    #     'This is Gachon'
+    #     >>> mc.get_cleaned_english_sentence("Is this Gachon?")
+    #     'Is this Gachon'
+    #     >>> mc.get_cleaned_english_sentence("How are you?")
+    #     'How are you'
+    #     >>> mc.get_cleaned_english_sentence("Fine, Thank you. and you?")
+    #     'Fine Thank you and you'
+    # """
+    # ===Modify codes below=============
+    # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
+    splitted_letters=[i for i in raw_english_sentence if not i =="." if not i =="," if not i =="!" if not i =="?"]
+    joined="".join(splitted_letters)
+    result= joined.strip()
+
+    return result
+    # ==================================
+
+
+
+def encoding_character(english_character):
+#     """
+#     Input:
+#         - english_character : 문자열값으로 알파벳 한 글자의 입력이 보장됨
+#     Output:
+#         - get_morse_code_dict 함수의 반환 값으로 인해 변환된 모스부호 문자열값
+#     Examples:
+#         >>> import morsecode as mc
+#         >>> mc.encoding_character("G")
+#         '--.'
+#         >>> mc.encoding_character("A")
+#         '.-'
+#         >>> mc.encoding_character("C")
+#         '-.-.'
+#         >>> mc.encoding_character("H")
+#         '....'
+#         >>> mc.encoding_character("O")
+#         '---'
+#         >>> mc.encoding_character("N")
+#         '-.'
+#     """
+    # ===Modify codes below=============
+    # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
+    morse_code_dict = get_morse_code_dict()
+    result =""
+    for k, v in morse_code_dict.items():
+        if k == english_character:
+            result=v
+
+
+    return result
+    # ==================================
+
+
+def encoding_sentence(english_sentence):
+
+    cleaned_sentence = get_cleaned_english_sentence(english_sentence)
+    result = ""
+    sentence=[]
+    list1 = cleaned_sentence.split(" ")
+    for i in list1:
+        splitted_list = i.split()
+        for j in splitted_list:
+            k_num=0;
+            for k in j:
+                print(k)
+                k_num+=1;
+                morse = encoding_character(k.upper())
+                sentence.append(morse)
+                if(k_num != j[len(j)-1]):
+                    print(k_num)
+                    sentence.append(" ")
+            sentence.append(" ")
+
+    joined = "".join(sentence)
+    striped_result = joined.strip()
+    result = striped_result
+
+
+    return result
+
+
+print(encoding_sentence("SOS"))
