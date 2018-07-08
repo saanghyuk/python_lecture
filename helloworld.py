@@ -1,21 +1,31 @@
 
 
+class Product(object):
+    pass
 
-class SoccerPlayer(object):
-    def __init__(self, name, position, back_number):
-        self.name = name
-        self.position = position
-        self.back_number = back_number
+class Inventory(object):
+    def __init__(self):
+        self.__items = []
 
-    def change_back_number(self, new_number):
-        print("선수의 등번호를 변경합니다. : From %d to %d" %(self.back_number, new_number))
-        self.back_number = new_number
+def add_new_item(self, product):
+    if type(product) == Product:
+        self.__items.append(product)
+        print("new item added")
+    else:
+        raise ValueError("Invalid Item")
 
+def get_number_of_items(self):
+    return len(self.__items)
 
-    def __str__(self):
-        return "Hello, My name is %s. I play in %s in center" %(self.name, self.position)
+@property
+    def items(self):
+    return self.__items
 
-sanghyuk = SoccerPlayer("Sanghyuk", "MF", 10)
-print(sanghyuk)
+my_inventory = Inventory()
+my_inventory.add_new_item(Product())
+my_inventory.add_new_item(Product())
+print(my_inventory.get_number_of_items())
 
-sanghyuk.change_back_number(5)
+items = my_inventory.items
+items.append(Product())
+print(my_inventory.get_number_of_items())
